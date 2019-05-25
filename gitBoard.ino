@@ -15,6 +15,8 @@
 String commands[] = {"git add *","git commit -m ''<","git push origin ","|","git status|","git reset --hard","git checkout -b "};
 String commands_lower[] = {"1","2","3","4","5","6","7"};
 int modifier = 0;
+int modDown = 0;
+long oldMillis;
 
 void setup() {
   for(int i = 2; i < 9; i++)
@@ -33,15 +35,25 @@ void checkKeys()
 {
   for(int i = 0; i < 7; i++)
   {
-    if(i == 3)
+    if(i == 3) //we want to skip the 4th button being read because its the modifier key
     {
       if(digitalRead(5) == LOW)
       {
+        if(modDown == 0)
+        {
+          modDown = 1;
+          oldMillis = millis();
+        }
         modifier = 1;
       }
       else
       {
+        if(millis() - oldMillis < 200 && modDown == 1 && millis() - oldMillis > 50)
+        {
+          WriteString(commands[3]);
+        }
         modifier = 0;
+        modDown = 0;
       }
     }
     else if(digitalRead(i+2) == LOW)
