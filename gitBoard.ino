@@ -12,7 +12,7 @@
 // 7 -> bot mid
 // 8 -> bot right
 
-String commands[] = {"git add *","git commit -m ''<","4","KEY_RETURN","6","7","8"};
+String commands[] = {"git add *","git commit -m ''<","git push origin ","KEY_RETURN","git status","7","8"};
 
 void setup() {
   for(int i = 2; i < 9; i++)
