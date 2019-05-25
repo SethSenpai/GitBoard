@@ -13,6 +13,7 @@
 // 8 -> bot right
 
 String commands[] = {"git add *","git commit -m ''<","git push origin ","|","git status|","git reset --hard","git checkout -b "};
+String commands_lower[] = {"1","2","3","4","5","6","7"};
 int modifier = 0;
 
 void setup() {
@@ -50,7 +51,14 @@ void checkKeys()
       {//idle till keyup
         delay(1);
       }
-      WriteString(commands[i]);
+      if(modifier == 0)
+      {
+        WriteString(commands[i]);
+      }
+      else if(modifier == 1)
+      {
+        WriteString(commands_lower[i]);
+      }
     }
   }
 }
