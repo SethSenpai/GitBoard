@@ -1,5 +1,5 @@
 # Gitboard
-image soon
+image soon (when I have actual sunlight)
 
 ## Needed Materials
 * 3D printer

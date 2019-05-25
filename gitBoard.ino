@@ -12,7 +12,7 @@
 // 7 -> bot mid
 // 8 -> bot right
 
-String commands[] = {"git add *","git commit -m ''<","git push origin ","KEY_RETURN","git status|","git reset --hard","git checkout -b "};
+String commands[] = {"git add *","git commit -m ''<","git push origin ","|","git status|","git reset --hard","git checkout -b "};
 
 void setup() {
   for(int i = 2; i < 9; i++)
@@ -45,21 +45,14 @@ void checkKeys()
 
 void WriteString(String a)
 {
-  if(a == "KEY_RETURN")
+  for(int i = 0; i < a.length(); i++)
   {
-    Keyboard.write(0xB0);
-  }
-  else
-  {
-    for(int i = 0; i < a.length(); i++)
+    if(a[i] == '<'){Keyboard.write(0xD8);}
+    else if(a[i] == '>'){Keyboard.write(0xD7);}
+    else if(a[i] == '|'){Keyboard.write(0xB0);}
+    else
     {
-      if(a[i] == '<'){Keyboard.write(0xD8);}
-      else if(a[i] == '>'){Keyboard.write(0xD7);}
-      else if(a[i] == '|'){Keyboard.write(0xB0);}
-      else
-      {
-      Keyboard.write(a[i]);
-      }
-    } 
-  }
+    Keyboard.write(a[i]);
+    }
+  } 
 }
