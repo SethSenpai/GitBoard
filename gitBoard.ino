@@ -33,7 +33,7 @@ void checkKeys()
 {
   for(int i = 0; i < 7; i++)
   {
-    if(i == 5)
+    if(i == 3)
     {
       if(digitalRead(5) == LOW)
       {
