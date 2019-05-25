@@ -1,5 +1,5 @@
 /*
-  For Leonardo and Due boards only.
+  Add switches to the pins defined below here. pin > switch > ground
 */
 
 #include "Keyboard.h"
