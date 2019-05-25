@@ -13,6 +13,7 @@
 // 8 -> bot right
 
 String commands[] = {"git add *","git commit -m ''<","git push origin ","|","git status|","git reset --hard","git checkout -b "};
+int modifier = 0;
 
 void setup() {
   for(int i = 2; i < 9; i++)
@@ -31,7 +32,18 @@ void checkKeys()
 {
   for(int i = 0; i < 7; i++)
   {
-    if(digitalRead(i+2) == LOW)
+    if(i == 5)
+    {
+      if(digitalRead(5) == LOW)
+      {
+        modifier = 1;
+      }
+      else
+      {
+        modifier = 0;
+      }
+    }
+    else if(digitalRead(i+2) == LOW)
     {
       delay(1);
       while(digitalRead(i+2) == LOW)
