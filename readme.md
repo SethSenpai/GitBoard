@@ -1,5 +1,5 @@
 # Gitboard
-image soon (when I have actual sunlight)
+![image1](https://github.com/SethSenpai/GitBoard/blob/master/img/DSC_0046.JPG?raw=true) ![image2](https://github.com/SethSenpai/GitBoard/blob/master/img/DSC_0047.JPG?raw=true)
 
 ## Needed Materials
 * 3D printer
