@@ -1,8 +1,12 @@
 /*
   Add switches to the pins defined below here. pin > switch > ground
+  You can use the modifier layer in 2 different ways:
+  As a combination lock to print your username and or password.
+  Or as a 2nd layer for more commands. Check the code to see what you need to comment out and fill in to enable this mode.
 */
 
 #include "Keyboard.h"
+#include "Secret.h" //don't forget to update this to the name of the file that holds your secret data!
 
 // 2 -> top left
 // 3 -> top mid
@@ -13,10 +17,11 @@
 // 8 -> bot right
 
 String commands[] = {"git add *","git commit -m ''<","git push origin ","|","git status|","git reset --hard","git checkout -b "};
-String commands_lower[] = {"1","2","3","4","5","6","7"};
+String commands_lower[] = {"","","","","","",""}; //this array is empty because we're using the board in password mode
 int modifier = 0;
 int modDown = 0;
 long oldMillis;
+int pressedHistory[] = {0,0,0};
 
 void setup() {
   for(int i = 2; i < 9; i++)
@@ -70,8 +75,29 @@ void checkKeys()
       else if(modifier == 1)
       {
         WriteString(commands_lower[i]);
+        UpdatePressedHistory(i+2); 
+        CheckSecretCombo(); //comment out this line if you want to use your modifier layer as extra commands instead of a pin for password / username
       }
     }
+  }
+}
+
+void UpdatePressedHistory(int key)
+{
+  pressedHistory[0] = pressedHistory[1];
+  pressedHistory[1] = pressedHistory[2];
+  pressedHistory[2] = key;
+}
+
+void CheckSecretCombo()
+{
+  if(pressedHistory[0] == USEONE && pressedHistory[1] == USETWO && pressedHistory[2] == USETHREE)
+  {
+    WriteString(USERNAME);
+  }
+  if(pressedHistory[0] == PASONE && pressedHistory[1] == PASTWO && pressedHistory[2] == PASTHREE)
+  {
+    WriteString(PASSWORD);
   }
 }
 
