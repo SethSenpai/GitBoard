@@ -66,7 +66,7 @@ void checkKeys()
       delay(1);
       while(digitalRead(i+2) == LOW)
       {//idle till keyup
-        delay(1);
+        delay(5);
       }
       if(modifier == 0)
       {
@@ -78,6 +78,7 @@ void checkKeys()
         UpdatePressedHistory(i+2); 
         CheckSecretCombo(); //comment out this line if you want to use your modifier layer as extra commands instead of a pin for password / username
       }
+      delay(5);
     }
   }
 }
