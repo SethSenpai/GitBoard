@@ -10,5 +10,5 @@
 #define PASTHREE  8
 
 //your passwords and username
-#define USERNAME "SethSenpai"
-#define PASSWORD "AriaTsb-550"
+#define USERNAME "Username"
+#define PASSWORD "Password"
